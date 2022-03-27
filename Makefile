@@ -1,41 +1,47 @@
-# Adaptado de http://stackoverflow.com/a/30142139
+# Makefile for the notex editor featuring autodepend
+# Use this answer to learn more: http://stackoverflow.com/a/30142139
 
-GPP = g++
+SHELL = /bin/sh
+CXX := g++
+CXXFLAGS := -std=c++17 -Wall -g -L$(SFML_LIB) -I$(SFML_HEADERS)
+# -std=c++17  	- Use C++17 standard
+# -Wall  		- turns on most compiler warnings
+# -g     		- adds debug information to the executable
+
+# SFML configuration
 SFML_VERSION=2.5.1
-
 SFML_LIB=/usr/local/lib/SFML-$(SFML_VERSION)/lib
 SFML_HEADERS=/usr/local/lib/SFML-$(SFML_VERSION)/include
 
-FLAGS = -std=c++11 -Wall -L $(SFML_LIB) -I $(SFML_HEADERS)
-LIBS= -lsfml-graphics -lsfml-window -lsfml-system
+srcdir := ./src
+bindir := ./bin
 
-# Final binary
-BIN = editor
+APPNAME := notex
+INCLUDES := -I$(srcdir)/header/
+LDLIBS := -lsfml-graphics -lsfml-window -lsfml-system
 
-# Put all auto generated stuff to this build dir.
-BUILD_DIR = ./build
+# List of all .cpp source files from the directory specified in $srcdir
+srcfiles := $(wildcard $(srcdir)/*.cpp)
 
-# List of all .cpp source files.
-# CPP = main.cpp $(wildcard dir1/*.cpp) $(wildcard dir2/*.cpp)
-CPP = Editor.cpp $(wildcard src/*.cpp)
-
-# All .o files go to build dir.
-OBJ = $(CPP:%.cpp=$(BUILD_DIR)/%.o)
+# All .o files go to the bin directory
+objfiles := $(srcfiles:%.cpp=$(bindir)/%.o)
 
 # Gcc/Clang will create these .d files containing dependencies.
-DEP = $(OBJ:%.o=%.d)
+DEP = $(objfiles:%.o=%.d)
 
-# Default target named after the binary.
-$(BIN) : $(BUILD_DIR)/$(BIN)
+#Build the app specified in APPNAME for the "all" or "default" target
+all: $(APPNAME)
+default: $(APPNAME)
+$(APPNAME): $(bindir)/$(APPNAME)		# Default target named after the binary
+
+
 
 # Actual target of the binary - depends on all .o files.
-$(BUILD_DIR)/$(BIN) : $(OBJ)
+$(bindir)/$(APPNAME) : $(objfiles)
 # Create build directories - same structure as sources.
 	@mkdir -p $(@D)
 # Just link all the object files.
-	$(GPP) $(FLAGS) $^ -o $@ $(LIBS)
-# Solo por conveniencia, para poder hacer ./editor facilmente
-	@mv $(BUILD_DIR)/$(BIN) $(BIN)
+	$(CXX) $(CXXFLAGS) $^ -o $@ $(LDLIBS)
 
 # Include all .d files
 -include $(DEP)
@@ -43,15 +49,26 @@ $(BUILD_DIR)/$(BIN) : $(OBJ)
 # Build target for every single object file.
 # The potential dependency on header files is covered
 # by calling `-include $(DEP)`.
-$(BUILD_DIR)/%.o : %.cpp
+$(bindir)/%.o : %.cpp
 	@mkdir -p $(@D)
 # The -MMD flags additionaly creates a .d file with
 # the same name as the .o file.
-	$(GPP) $(FLAGS) -MMD -c $< -I src/ -o $@
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -MMD -c $< -I src/ -o $@
 
+
+
+echo: 									#Print source files
+	@echo -e "\nSource files"
+	@echo $(srcfiles)
+	@echo -e "\nObject files"
+	@echo $(objfiles)
+	@echo -e ""
+
+install:
+	mv bin $(DESTDIR)
+	
 .PHONY : clean
-clean :
-# This should remove all generated files.
-	-rm -f $(BUILD_DIR)/$(BIN) $(OBJ) $(DEP)
-	rm -f editor #Why remove the executable too?
-	rmdir build/src build
+clean:
+	rm -f $(bindir)/$(APPNAME)
+	rm -f $(bindir)/$(srcdir)/*
+	rm -fd $(bindir)/$(srcdir)
