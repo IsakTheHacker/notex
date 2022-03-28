@@ -8,25 +8,25 @@
 #include "EditorContent.h"
 
 class InputController {
-   public:
-    InputController(EditorContent &editorContent);
-    void handleConstantInput(EditorView &view, sf::RenderWindow &window);
-    void handleEvents(EditorView &view, sf::RenderWindow &window, sf::Event &event);
-    bool isMouseDown();
+public:
+	InputController(EditorContent &editorContent);
+	void handleConstantInput(EditorView &view, sf::RenderWindow &window);
+	void handleEvents(EditorView &view, sf::RenderWindow &window, sf::Event &event);
+	bool isMouseDown();
 
-   private:
-    void handleMouseEvents(EditorView &view, sf::RenderWindow &window, sf::Event &event);
-    void handleKeyPressedEvents(EditorView &view, sf::Event &event);
-    void handleKeyReleasedEvents(sf::Event &event);
-    void handleTextEnteredEvent(EditorView &view, sf::Event &event);
+private:
+	void handleMouseEvents(EditorView &view, sf::RenderWindow &window, sf::Event &event);
+	void handleKeyPressedEvents(EditorView &view, sf::Event &event);
+	void handleKeyReleasedEvents(sf::Event &event);
+	void handleTextEnteredEvent(EditorView &view, sf::Event &event);
 
-    void updateCursorInEditor(EditorView &textView, float mouseX, float mouseY);
+	void updateCursorInEditor(EditorView &textView, float mouseX, float mouseY);
 
-    bool mouseDown;
-    bool shiftPressed;
-    sf::String stringCopied;
+	bool mouseDown;
+	bool shiftPressed;
+	sf::String stringCopied;
 
-    EditorContent& editorContent;
+	EditorContent& editorContent;
 };
 
 #endif
