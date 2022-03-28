@@ -43,10 +43,16 @@ int main(int argc, char* argv[]) {
 				editorView.setCameraBounds(event.size.width, event.size.height);
 			}
 			if (event.key.code == sf::Keyboard::S && sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)) {
-				if (document.hasChanged()){
+				if (document.hasChanged()) {
 					document.saveFile(saveFileName);
 					std::cout << "SAVED TO: " << saveFileName << "\n";
 				}
+			}
+
+			if (document.hasChanged()) {
+				window.setTitle(buildconf::unsavedChangesSymbol + buildconf::programName);
+			} else {
+				window.setTitle(buildconf::programName);
 			}
 
 			inputController.handleEvents(editorView, window, event);
