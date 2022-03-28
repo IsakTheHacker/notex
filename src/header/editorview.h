@@ -3,7 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <cmath>
-#include "EditorContent.h"
+#include "editorcontent.h"
 
 class EditorView {
 public:

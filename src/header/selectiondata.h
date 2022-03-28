@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <vector>
-#include "TextDocument.h"
+#include "textdocument.h"
 
 // TODO: Pensar si la seleccion no deberia conocer al documento, para arreglar quilombos con los multiples
 // TODO: Avanzar/retroceder un char. Avanzar/retroceder una palabra

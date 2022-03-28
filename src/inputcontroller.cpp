@@ -1,4 +1,4 @@
-#include "InputController.h"
+#include "inputcontroller.h"
 
 InputController::InputController(EditorContent &editorContent)
 	: editorContent(editorContent) {

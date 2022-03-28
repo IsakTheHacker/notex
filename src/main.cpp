@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
-#include "EditorView.h"
-#include "TextDocument.h"
-#include "InputController.h"
+#include "editorview.h"
+#include "textdocument.h"
+#include "inputcontroller.h"
 #include "buildconfig.h"
 
 int main(int argc, char* argv[]) {

@@ -1,4 +1,4 @@
-#include "TextDocument.h"
+#include "textdocument.h"
 
 // La idea es leer el file y guardarlo en buffer (quiero cargarlo en la memoria)
 // Para esto uso std::ifstream para levantar el archivo

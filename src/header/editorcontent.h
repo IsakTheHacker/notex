@@ -2,8 +2,8 @@
 #define EditorContent_H
 
 #include <SFML/Graphics.hpp>
-#include "SelectionData.h"
-#include "TextDocument.h"
+#include "selectiondata.h"
+#include "textdocument.h"
 #include "cursor.h"
 
 class EditorContent {

@@ -1,4 +1,4 @@
-#include "SpecialChars.h"
+#include "specialchars.h"
 
 namespace SpecialChars {
 std::string convertSpecialChar(sf::Uint32 c, std::ofstream &outputFile) {

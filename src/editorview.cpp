@@ -1,4 +1,4 @@
-#include "EditorView.h"
+#include "editorview.h"
 
 // TODO: el -50 de la inicializacion de la camara tiene que ver con el marginXoffset
 EditorView::EditorView(

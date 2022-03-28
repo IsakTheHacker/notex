@@ -11,7 +11,7 @@
 #include <algorithm>
 #include <string>
 
-#include "SpecialChars.h"
+#include "specialchars.h"
 
 using std::string;
 using std::vector;
