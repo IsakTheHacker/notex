@@ -50,6 +50,11 @@
 #define U_UPPER_ACUTE 218
 #define U_UPPER_CIRCUMFLEX 219
 
+//-----Swedish letters------//
+#define SWEDISH_AA 229
+#define SWEDISH_AE 228
+#define SWEDISH_OE 246
+
 namespace SpecialChars {
 
 std::string convertSpecialChar(sf::Uint32 c, std::ofstream &outputFile);

@@ -65,6 +65,14 @@ std::string convertSpecialChar(sf::Uint32 c, std::ofstream &outputFile) {
             return "Û";
         case N_LOWER_TILDE:
             return "ñ";
+        
+        //Swedish characters
+        case SWEDISH_AA:
+            return "å";
+        case SWEDISH_AE:
+            return "ä";
+        case SWEDISH_OE:
+            return "ö";
     }
     if (c < 128) {
         return sf::String(c);
