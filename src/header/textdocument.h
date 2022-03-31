@@ -35,6 +35,8 @@ public:
 	void swapLines(int lineA, int lineB);
 
 	int charAmountContained(int startLineN, int startCharN, int endLineN, int endCharN);
+
+	void forceDocumentChanged(bool changed);
 private:
 	bool initLinebuffer();
 	sf::String buffer;

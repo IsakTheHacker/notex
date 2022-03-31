@@ -16,6 +16,7 @@ bool TextDocument::loadFile(string &filename) {
 	this->length = buffer.getSize();  // Posiblemente no sea necesario
 
 	inputFile.close();
+	this->documentHasChanged = false;
 	this->initLinebuffer();
 	return true;
 }
@@ -27,6 +28,7 @@ bool TextDocument::loadBuffer(string &text) {
 	this->buffer = this->toUtf32(inputStringStream.str());
 	this->length = buffer.getSize();  // Posiblemente no sea necesario
 
+	this->documentHasChanged = false;
 	this->initLinebuffer();
 	return true;
 }
@@ -225,4 +227,8 @@ int TextDocument::charsInLine(int line) const {
 
 int TextDocument::getLineCount() const {
 	return (int)this->lineBuffer.size();
+}
+
+void TextDocument::forceDocumentChanged(bool changed) {
+	this->documentHasChanged = changed;
 }
