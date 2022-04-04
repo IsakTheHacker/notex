@@ -28,6 +28,7 @@ apps:
   notex:
     command: bin/notex
     plugs:
+      - opengl
       - desktop
       - desktop-legacy
       - wayland
@@ -48,4 +49,3 @@ parts:
       - libsfml-dev
     stage-packages:
       - libsfml-dev
-      - i965-va-driver
