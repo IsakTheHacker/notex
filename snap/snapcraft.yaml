@@ -48,5 +48,4 @@ parts:
       - libsfml-dev
     stage-packages:
       - libsfml-dev
-      - libgl1-mesa-swrast-dev
       - i965-va-driver
