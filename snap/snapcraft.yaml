@@ -38,7 +38,7 @@ apps:
 
 parts:
   notex:
-    source: https://github.com/notex/notex.git
+    source: https://github.com/IsakTheHacker/notex.git
     source-type: git
     override-pull: |
       snapcraftctl pull
