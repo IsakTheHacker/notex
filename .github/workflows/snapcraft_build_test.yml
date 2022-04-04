@@ -1,0 +1,27 @@
+name: Snapcraft Build & Test
+
+# Controls when the workflow will run
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    
+jobs:
+  build_test:
+    runs-on: ubuntu-latest
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+    
+    - name: Build project
+      uses: snapcore/action-build@v1
+      id: build
+    
+    - name: Try to install project
+      run: |
+        sudo snap install --dangerous --classic ${{ steps.build.outputs.snap }}
+
