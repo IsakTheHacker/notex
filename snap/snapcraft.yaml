@@ -9,7 +9,7 @@ title: Notex
 website: https://github.com/IsakTheHacker/notex
 source-code: https://github.com/IsakTheHacker/notex.git
 issues: https://github.com/IsakTheHacker/notex/issues
-license: MIT License
+license: MIT
 
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
