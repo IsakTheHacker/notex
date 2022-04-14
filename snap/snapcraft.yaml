@@ -36,6 +36,7 @@ apps:
       - desktop-legacy
       - wayland
       - unity7
+      - x11
       - cups-control
       - gsettings
       - home
