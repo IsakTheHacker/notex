@@ -53,3 +53,5 @@ parts:
       - libsfml-dev
     stage-packages:
       - libsfml-dev
+    stage:
+      - assets/*
