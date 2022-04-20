@@ -65,7 +65,7 @@ echo: 									#Print source files
 	@echo -e ""
 
 install:
-	mv bin $(DESTDIR)
+	cp -rf bin $(DESTDIR)
 	
 .PHONY : clean
 clean:

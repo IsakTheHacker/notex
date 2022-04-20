@@ -53,5 +53,9 @@ parts:
       - libsfml-dev
     stage-packages:
       - libsfml-dev
-    stage:
-      - assets/*
+  copyassets:
+    plugin: dump
+    source: ./assets/
+    organize:
+      "*": "assets/"
+
