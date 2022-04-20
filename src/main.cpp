@@ -4,9 +4,15 @@
 #include "inputcontroller.h"
 #include "buildconfig.h"
 
+std::string getEnvVarDefaultToWorking(std::string const& key) const {
+    char * val = getenv(key.c_str());
+    return val == NULL ? std::string(".") : std::string(val);
+}
+
 int main(int argc, char* argv[]) {
 
 	std::string workingDirectory = "./";
+	std::string assetDirectory = getEnvVarDefaultToWorking("SNAP") + "/assets/";
 
 	std::string saveFileName;
 	std::string loadFileName;
@@ -29,7 +35,7 @@ int main(int argc, char* argv[]) {
 
 	EditorContent editorContent(document);
 
-	EditorView editorView(window, workingDirectory, editorContent);
+	EditorView editorView(window, assetDirectory, editorContent);
 	InputController inputController(editorContent);
 
 

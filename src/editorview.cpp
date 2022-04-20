@@ -9,8 +9,8 @@ EditorView::EditorView(
 		camera(sf::FloatRect(-50, 0, window.getSize().x, window.getSize().y)),
 		deltaScroll(20), deltaRotation(2), deltaZoomIn(0.8f), deltaZoomOut(1.2f) {
 
-	// this->font.loadFromFile("assets/fonts/FreeMono.ttf");
-	this->font.loadFromFile(workingDirectory + "assets/fonts/DejaVuSansMono.ttf");
+	// this->font.loadFromFile("fonts/FreeMono.ttf");
+	this->font.loadFromFile(workingDirectory + "fonts/DejaVuSansMono.ttf");
 
 	this->bottomLimitPx = 1;
 	this->rightLimitPx = 1;
