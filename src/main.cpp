@@ -1,11 +1,12 @@
 #include <SFML/Graphics.hpp>
+#include <cstdlib>
 #include "editorview.h"
 #include "textdocument.h"
 #include "inputcontroller.h"
 #include "buildconfig.h"
 
-std::string getEnvVarDefaultToWorking(std::string const& key) const {
-    char * val = getenv(key.c_str());
+std::string getEnvVarDefaultToWorking(std::string const& key) {
+    char * val = std::getenv(key.c_str());
     return val == NULL ? std::string(".") : std::string(val);
 }
 
